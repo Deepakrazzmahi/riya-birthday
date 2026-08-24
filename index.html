@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            font-family: "Segoe UI", sans-serif;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+                url("her-photo.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main Card */
+        .card {
+            width: 90%;
+            max-width: 650px;
+            padding: 45px 30px;
+            text-align: center;
+
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.5),
+                inset 0 0 30px rgba(255,255,255,0.1);
+
+            animation: cardAppear 2s ease;
+        }
+
+        .heart {
+            font-size: 65px;
+            animation: heartbeat 1.3s infinite;
+        }
+
+        h1 {
+            margin-top: 10px;
+            color: white;
+            font-size: clamp(38px, 8vw, 65px);
+
+            text-shadow:
+                0 0 10px #ff4d88,
+                0 0 25px #ff4d88,
+                0 0 45px #ff4d88;
+
+            animation: glow 2s infinite alternate;
+        }
+
+        h2 {
+            margin-top: 10px;
+            color: #ffd6e5;
+            font-size: 28px;
+        }
+
+        .message {
+            margin: 25px auto;
+            max-width: 520px;
+
+            color: white;
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+        .message span {
+            color: #ffb6d1;
+            font-weight: bold;
+        }
+
+        /* Button */
+        button {
+            margin-top: 10px;
+            padding: 15px 30px;
+
+            border: none;
+            border-radius: 50px;
+
+            background: #ff4081;
+            color: white;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 0 20px rgba(255,64,129,0.7);
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(255,64,129,1);
+        }
+
+        /* Surprise Message */
+        #surprise {
+            display: none;
+            margin-top: 25px;
+
+            color: white;
+            font-size: 22px;
+            line-height: 1.6;
+
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* Floating Hearts */
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+
+            font-size: 25px;
+
+            animation: floatUp linear infinite;
+
+            pointer-events: none;
+        }
+
+        /* Animations */
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow:
+                    0 0 10px #ff4d88,
+                    0 0 20px #ff4d88;
+            }
+
+            to {
+                text-shadow:
+                    0 0 20px #ff4d88,
+                    0 0 45px #ff4d88,
+                    0 0 70px #ff4d88;
+            }
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.5) translateY(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Birthday Card -->
+    <div class="card">
+
+        <div class="heart">❤️</div>
+
+        <h1>Happy Birthday!</h1>
+
+        <!-- Change her name here -->
+        <h2>To My Special Person RIYA MEDAM 💕</h2>
+
+        <p class="message">
+            Today is a very special day because
+            <span>you were born</span>. ❤️
+            <br><br>
+
+            May your smile always shine,
+            may your dreams come true,
+            and may your life be filled with
+            endless happiness. ✨
+            <br><br>
+
+            You deserve all the beautiful things
+            this world has to offer. 🌹
+        </p>
+
+        <button onclick="showSurprise()">
+            🎁 Open Your Surprise
+        </button>
+
+        <div id="surprise">
+<img src="riya.png" height="200" width="300">
+            <br>
+  ✨ You are truly special for me ! ✨
+            <br>
+            Keep smiling, keep shining,
+            and have the most beautiful birthday ever. ❤️
+            <br><br>
+            🎂 Happy Birthday! 🎉
+        </div>
+
+    </div>
+
+    <!-- Floating Hearts -->
+    <script>
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("floating-heart");
+
+            const hearts = ["❤️", "💕", "💖", "💗", "💓", "💘"];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 30) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 500);
+
+
+        function showSurprise() {
+
+            document.getElementById("surprise").style.display = "block";
+
+        }
+
+    </script>
+
+</body>
+</html>
